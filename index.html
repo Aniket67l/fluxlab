@@ -567,28 +567,55 @@ video{
 <section class="section">
   <h2>Edited Videos</h2>
   <div class="grid">
-   <div class="card video-card wide-card">
+<div class="card video-card wide-card" id="video-school-edit">
+
   <div class="video-wrapper">
     <iframe
-     src="https://drive.google.com/file/d/14uRSxdBQsuItFiM_j2VuWg7TOAVU1sQz/preview"
-
+      src="https://drive.google.com/file/d/14uRSxdBQsuItFiM_j2VuWg7TOAVU1sQz/preview"
       allow="autoplay"
       allowfullscreen>
     </iframe>
   </div>
-  <h3 class="video-title">school edit</h3>
+
+  <h3 class="video-title">School Edit</h3>
+
+  <!-- ACTIONS -->
+  <div class="video-actions">
+    <button class="like-btn" onclick="likeVideo('video-school-edit')">
+      ❤️ <span id="like-video-school-edit">0</span>
+    </button>
+
+    <button class="share-btn" onclick="shareVideo('video-school-edit')">
+      🔗 Share
+    </button>
+  </div>
+
 </div>
+
 
 <div class="scroll-hint-bottom section-arrow" id="toLinks">
   <span class="arrow">↓</span>
 </div>
 
-    <div class="card">
- <video controls preload="metadata" playsinline src="video2.mp4"></video>
+<div class="card video-card" id="video-memories">
+
+  <video controls preload="metadata" playsinline src="video2.mp4"></video>
+
   <h3 class="video-title">Memories Montage</h3>
+
+  <!-- ACTIONS -->
+  <div class="video-actions">
+    <button class="like-btn" onclick="likeVideo('video-memories')">
+      ❤️ <span id="like-video-memories">0</span>
+    </button>
+
+    <button class="share-btn" onclick="shareVideo('video-memories')">
+      🔗 Share
+    </button>
+  </div>
+
 </div>
 
-  </div>
 </section>
 
 <!-- PROJECT / LINKS SECTION -->
@@ -802,11 +829,35 @@ window.addEventListener("load", () => {
     duration: 0.6
   }, "-=0.3");
 });
+function likeVideo(id) {
+  const key = `likes-${id}`;
+  let likes = localStorage.getItem(key) || 0;
+  likes++;
+  localStorage.setItem(key, likes);
+  document.getElementById(`like-${id}`).innerText = likes;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".video-card").forEach(card => {
+    const id = card.id;
+    const saved = localStorage.getItem(`likes-${id}`);
+    if (saved) {
+      document.getElementById(`like-${id}`).innerText = saved;
+    }
+  });
+});
+
+function shareVideo(id) {
+  const url = `${location.origin}${location.pathname}#${id}`;
+  navigator.clipboard.writeText(url);
+  alert("Video link copied!");
+}
 
 </script>
 
 </body>
 </html>
+
 
 
 
