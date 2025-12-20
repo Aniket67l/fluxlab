@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>My Premium Portfolio</title>
+<title>My first Portfolio</title>
 
 <!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -382,7 +382,7 @@ video{
   height: 100%;
   border: none;
 }
-/* --- 4:1 ULTRA-WIDE VIDEO SUPPORT --- */
+/* --- SIMPLE DRIVE VIDEO CARD (NO CROP) --- */
 
 .video-card {
   overflow: hidden;
@@ -391,18 +391,24 @@ video{
 .video-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 1;   /* 🔥 IMPORTANT */
+  height: 340px;          /* 👈 card height increase */
   border-radius: 14px;
   overflow: hidden;
   background: #000;
 }
 
+/* iframe ko natural player jaise behave karne do */
 .video-wrapper iframe {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
   border: none;
+}
+
+/* mobile adjustment */
+@media (max-width: 600px) {
+  .video-wrapper {
+    height: 260px;
+  }
 }
 
 </style>
@@ -677,6 +683,7 @@ window.addEventListener("load", () => {
 
 </body>
 </html>
+
 
 
 
