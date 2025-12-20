@@ -614,6 +614,47 @@ video{
   background:rgba(155,188,255,0.35);
   transform:translateY(-2px);
 }
+/* ===============================
+   MOBILE FIX : SCHOOL EDIT VIDEO
+   =============================== */
+
+@media (max-width: 768px) {
+
+  .grid {
+    padding: 0 1rem;
+  }
+
+  .video-card.wide-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* YouTube / Drive ratio */
+    overflow: hidden;
+    border-radius: 14px;
+  }
+
+  .video-wrapper iframe,
+  .video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .video-actions {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: center;
+  }
+}
 
 </style>
 </head>
@@ -1063,6 +1104,7 @@ function sharePDF(){
 
 </body>
 </html>
+
 
 
 
